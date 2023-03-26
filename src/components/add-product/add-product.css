@@ -1,0 +1,94 @@
+.modal{
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top:0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0);
+  transition: .2s all;
+}
+
+.modal.active{
+  transform: scale(1);
+  transition: .2s all;
+}
+
+.modal-content{
+  padding: 20px;
+  border-radius: 12px;
+  background-color: white;
+  min-height: 300px;
+  min-width: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-product{
+  height: 50px;
+  background-color: rgba(3, 92, 62, 0.384);
+  border: none;
+  font-size: 18px;
+  font-family: 'Raleway';
+  font-weight: bold;
+  transition: .4s all;
+  width: 100%;
+}
+
+.add-product:hover{
+  cursor: pointer;
+  background-color: rgb(3, 92, 62);
+  color:white;
+  transition: .4s all;
+}
+
+.cancel{
+  position: absolute;
+  height: 25px;
+  right: 15px;
+  top: 10px;
+  transition: .7s all;
+}
+
+.cancel:hover{
+  cursor: pointer;
+  transform: rotate(180deg);
+  transition: .7s all;
+}
+
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: red;
+}
+
+
+.submit{
+  border: none;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(0,0,0,0.2);
+
+}
+
+.submit-active{
+  background-color: rgba(3, 92, 62, 0.788);
+  color: white;
+  border: none;
+  width: 100%;
+  height: 50px;
+}
+.submit,.submit-active:hover{
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+}

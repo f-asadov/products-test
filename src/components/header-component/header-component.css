@@ -1,0 +1,16 @@
+.header-main {
+    background-color: rgb(3, 92, 62);
+    height: 90px;
+    min-width: 100%;
+    display: flex;
+    font-family: 'Raleway';
+}
+
+.header-title {
+    color: white;
+    display: flex;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
