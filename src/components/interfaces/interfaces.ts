@@ -13,7 +13,7 @@ export interface IProducts{
 }
 
 export interface IProductsResponse{
-    counter:any
+    products:any
 }
 
 export interface INewProduct {

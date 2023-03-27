@@ -7,7 +7,7 @@ import './search-component.css'
 
 const SearchComponent = () => {
     const [filterValue,setFilterValue] = React.useState<string>('')
-    const test = useSelector((state:IProductsResponse)=> state)
+    const storeProducts = useSelector((state:IProductsResponse)=> state)
     const dispatch = useDispatch()
 
     const filterChange = (filterText:React.ChangeEvent<HTMLInputElement>) =>{
@@ -16,7 +16,7 @@ const SearchComponent = () => {
     }
     
     const searchChange = (searchText:string):IProducts[] =>{
-        return test.counter.allProducts.filter((product:any) => {
+        return storeProducts.products.allProducts.filter((product:any) => {
             return (
               product.title.toLowerCase().includes(searchText.toLowerCase()) ||
               product.category.toLowerCase().includes(searchText.toLowerCase())

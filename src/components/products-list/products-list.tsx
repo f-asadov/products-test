@@ -9,7 +9,7 @@ import './products-list.css'
 
 const ProductsList = () => {
     const dispatch = useDispatch()
-    const test = useSelector((state: IProductsResponse) => state)
+    const storeProducts = useSelector((state: IProductsResponse) => state)
 
     React.useEffect(() => {
         axios.get('https://dummyjson.com/products').then((response) => {
@@ -21,10 +21,9 @@ const ProductsList = () => {
 
     const deleteProduct = (event: any) => {
         const productId = event.target.dataset.productId
-        let afterDelete = test.counter.filteredProducts.filter((product: any) => product.id !== parseInt(productId));
+        let afterDelete = storeProducts.products.filteredProducts.filter((product: IProducts) => product.id !== parseInt(productId));
         dispatch(setProducts(afterDelete))
     }
-
 
 
 
@@ -33,14 +32,17 @@ const ProductsList = () => {
             <div className="list">
                 <h2 className='products-list'>Список товарoв</h2>
                 <ul>
-                    {test.counter.filteredProducts.map((item: any, key: number) => {
+                    {storeProducts.products.filteredProducts.map((item: IProducts, key: number) => {
                         return (
-                            <Link to={`/product/${item.id}`} className='product-item' key={key} style={{ backgroundImage: item.thumbnail ? `url(${item.thumbnail})` : 'url(https://cdn.pixabay.com/photo/2020/05/26/09/32/product-5222398_960_720.jpg)' }} >
-                                {item.brand}
-                                <img src="https://cdn-icons-png.flaticon.com/512/491/491721.png" className='delete-product' onClick={()=>console.log('asa')} alt="" data-product-id={item.id} />
-                            </Link>
+                            <div className='product-wrapper' style={{ backgroundImage: item.thumbnail ? `url(${item.thumbnail})` : 'url(https://cdn.pixabay.com/photo/2020/05/26/09/32/product-5222398_960_720.jpg)' }}>
+                                <Link to={`/product/${item.id}`} className='product-item' key={key} >
+                                    {item.brand}
+                                </Link>
+                                <img src="https://cdn-icons-png.flaticon.com/512/491/491721.png" className='delete-product' alt="" onClick={deleteProduct} data-product-id={item.id} />
+                            </div>
+
                         )
-                        
+
                     })}
                 </ul>
             </div>

@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IProducts, IProductsResponse } from '../components/interfaces/interfaces'
+import {IProductsResponse } from '../components/interfaces/interfaces'
 
 
 
 
-const counterSlice = createSlice({
-  name: 'counter',
+const productsSlice = createSlice({
+  name: 'products',
   initialState: {
     allProducts: [] as IProductsResponse[],
     filteredProducts: [] as IProductsResponse[],
@@ -25,6 +25,6 @@ const counterSlice = createSlice({
 });
 
 
-export const { setProducts, setFilteredProducts} = counterSlice.actions;
-export const counterReducer = counterSlice.reducer;
-export default counterSlice.reducer;
+export const { setProducts, setFilteredProducts} = productsSlice.actions;
+export const productsReducer = productsSlice.reducer;
+export default productsSlice.reducer;

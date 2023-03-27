@@ -1,23 +1,25 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { IProducts, IProductsResponse } from '../interfaces/interfaces';
+import { IProductsResponse } from '../interfaces/interfaces';
 import './selected-product.css'
-const SelectedProduct = () =>{
-    const { id } = useParams();
-    const test = useSelector((state:IProductsResponse)=>state)
-   const product = test.counter.filteredProducts.find((item:any)=> {
-        if(id && item.id === parseInt(id)){
-            return item
-        }
-    })
-    const [selectedImage, setSelectedImage] = useState(product.thumbnail);
 
-  const handleImageClick = (image:any) => {
+const SelectedProduct = () => {
+  const { id } = useParams();
+  const storeProducts = useSelector((state: IProductsResponse) => state)
+  const product = storeProducts.products.filteredProducts.find((item: any) => {
+    if (id && item.id === parseInt(id)) {
+      return item
+    }
+  })
+  const [selectedImage, setSelectedImage] = useState<string>(product.thumbnail);
+
+  const handleImageClick = (image: string) => {
     setSelectedImage(image);
-  };
-    return (
-        <div className='container'>
+  }
+  
+  return (
+    <div className='container'>
       <table>
         <thead>
           <tr>
@@ -27,7 +29,7 @@ const SelectedProduct = () =>{
         <tbody>
           <tr>
             <td colSpan={2}>
-              <img src={selectedImage} alt={product.title} style={{width:'100%',height:500}} />
+              <img src={selectedImage} alt={product.title} style={{ width: '100%', height: 500 }} />
             </td>
           </tr>
           <tr>
@@ -61,7 +63,7 @@ const SelectedProduct = () =>{
         </tbody>
       </table>
       <div className='product-images'>
-        {product.images.map((image:any, index:number) => (
+        {product.images.map((image: string, index: number) => (
           <img
             key={index}
             src={image}
@@ -74,6 +76,6 @@ const SelectedProduct = () =>{
     </div>
   );
 };
-        
+
 
 export default SelectedProduct
